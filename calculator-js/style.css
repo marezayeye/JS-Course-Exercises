@@ -1,54 +1,67 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-size: 30px;
-    font-family: Arial;
+body {
+   background-color: #222;
+   color: #fff;
+   font-family: Arial, sans-serif;
  }
- body{
-    background-color: #000000;
- }
- .calc{
-    width: 400px;
-    margin: 100px auto;
- }
- .display{
-    color: #ffffff;
-    text-align: right;
-    font-size: 60px;
-    padding: 20px;
- }
- .keypad{
  
+ .calculator {
+   width: 320px;
+   margin: 50px auto;
+   border-radius: 5%;
+   background-color: #444;
+   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+   overflow: hidden;
  }
- .keypad-table{
  
+ .display {
+   margin: 10px 10px 10px 10px;
+   padding: 10px 10px 10px 10px;
+   background-color: #333;
+   width: 100%;
+   height: 100%;
+   border: none;
+   background-color: transparent;
+   font-size: 36px;
+   color: #fff;
+   text-align: start;
  }
- .keypad-table tr:first-child .key{
-    background-color: #a5a5a5;
+ 
+
+ 
+ .keypad {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   grid-gap: 10px;
+   padding: 10px;
  }
- .keypad-table tr:first-child .key:active{
-    background-color: #a5a5a590;
+ 
+ button {
+   width: 100%;
+   height: 60px;
+   border: none;
+   border-radius: 50%;
+   background-color: #666;
+   color: #fff;
+   font-size: 24px;
+   cursor: pointer;
+   transition: background-color 0.2s ease;
  }
- .keypad-table tr td:last-child .key{
-    background-color: #ffa45c;
+ 
+ button:hover {
+   background-color: #888;
  }
- .keypad-table tr td:last-child .key:active{
-    background-color: #ffa45ccc;
+ 
+ .operator {
+   background-color: #ff9800;
  }
- .key{
-    width: 90px;
-    height: 90px;
-    border: 1px solid black;
-    text-align: center;
-    line-height: 90px;
-    border-radius: 90px;
-    margin: 5px;
-    background-color: #333333;
-    color: #ffffff;
-    cursor: pointer;
-    user-select: none;
+ 
+
+ 
+ .red-button {
+   background-color: #f44336;
  }
- .key:active{
-    background-color: #33333390;
+ 
+ .green-button {
+   grid-column: 1 / span 2;
+   background-color: #4caf50;
  }
