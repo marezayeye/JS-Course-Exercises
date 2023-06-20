@@ -3,6 +3,7 @@ const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
 todoList.classList.add("todo-list");
+todoList.addEventListener("click", chooseAction);
 
 todoButton.addEventListener("click", todoAdd);
 
@@ -16,7 +17,6 @@ function todoAdd(event){
     const newTodo = document.createElement("li");
     newTodo.classList.add("todo-item");
     newTodo.innerText = todoInput.value;
-    // console.log(todoInput.value)
     saveToLocalStorage(todoInput.value);
 
     todoDiv.appendChild(newTodo);
@@ -49,10 +49,33 @@ function saveToLocalStorage(todo){
         localTodos.push(todo);
         localStorage.setItem("localTodos", JSON.stringify(localTodos));
     }
+};
 
+
+function chooseAction(event){
+    if (event.target.className == "complete-btn"){
+        checkButton(event)
+    }else if(event.target.className == "trash-btn"){
+        deleteButton(event);}
+};
+
+
+function deleteButton(event){
+    const item = event.target.parentElement;
+    item.remove();
+    deleteFromLocalStorage(event);
 
 };
 
-function deleteLocalStorage(){
-
+function checkButton(event){
+    const item = event.target.parentElement;
+    item.classList.toggle("completed");
 };
+
+function deleteFromLocalStorage(event){
+    const string = event.target.parentElement.innerText;
+    let temp = JSON.parse(localStorage.getItem("localTodos"));
+    temp.splice(temp.indexOf(string),1);
+    localStorage.setItem("localTodos", JSON.stringify(temp));
+};
+
