@@ -4,6 +4,9 @@ const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
 todoList.classList.add("todo-list");
 todoList.addEventListener("click", chooseAction);
+const filterOption = document.querySelector(".filter-todo");
+filterOption.addEventListener("click", filterTodo); 
+
 // document.addEventListener("DOMContentLoaded", storageReader);
 
 todoButton.addEventListener("click", todoCheck);
@@ -91,4 +94,41 @@ function todoCheck(event) {
         alert("Todo Already Exists");
         todoInput.value = "";
     };
+};
+
+function storageReader(){
+    let storage =JSON.parse(localStorage.getItem("localTodos"));
+    if ( storage == null){
+        null;
+    } else {
+        storage.forEach(element => todoCheck(element))
+    }
+};
+
+function filterTodo(event){
+    // console.log("filterTodo called");
+    const todos = todoList.childNodes;
+    todos.forEach(function (todo){
+        switch (event.target.value){
+            case "all":
+                todo.style.display = "flex";
+                break;
+    
+            case "completed":
+                if(todo.classList.contains("completed")){
+                    todo.style.display = "flex";
+                } else {
+                    todo.style.display = "none";
+                }
+                break;
+            
+            case "uncompleted":
+                if(todo.classList.contains("completed")){
+                    todo.style.display = "none";
+                } else {
+                    todo.style.display = "flex";
+                }
+            break;
+        }
+    })
 };
