@@ -4,8 +4,9 @@ const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
 todoList.classList.add("todo-list");
 todoList.addEventListener("click", chooseAction);
+// document.addEventListener("DOMContentLoaded", storageReader);
 
-todoButton.addEventListener("click", todoAdd);
+todoButton.addEventListener("click", todoCheck);
 
 //this function gets the todo text from the input and creates corresponding div and adds proper bottons to it
 //besides it sets the class attribute for the newly created element in order to apply proper styles to it
@@ -79,3 +80,15 @@ function deleteFromLocalStorage(event){
     localStorage.setItem("localTodos", JSON.stringify(temp));
 };
 
+
+function todoCheck(event) {
+    let savedTodos = JSON.parse(localStorage.getItem("localTodos"));
+    if (savedTodos == null){
+        todoAdd(event);
+    } else if (savedTodos.indexOf(todoInput.value) == -1){
+        todoAdd(event);
+    } else {
+        alert("Todo Already Exists");
+        todoInput.value = "";
+    };
+};
