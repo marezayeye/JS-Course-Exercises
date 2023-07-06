@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>validate form js</title>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  <link rel="shortcut icon" href="#" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <form id="loginForm">
+      <h2>Login</h2>
+      <div class="form-group">
+        <label for="email"><i class="fas fa-envelope"></i></label>
+        <input type="username" id="email" name="email" placeholder="Email">
+      </div>
+      <div class="warnings">
+        <span class="email-warning"></span>
+      </div>
+      <div class="form-group">
+        <label for="password"><i class="fas fa-lock"></i></label>
+        <input type="password" id="password" name="password" placeholder="Password">
+      </div>
+      <div class="warnings">
+      <p class="password-warning"></p>
+
+      </div>
+      <button class="submit-btn" type="submit">Login</button>
+      <span class="login-done"></span>
+      <span class="login-failed"></span>
+    </form>
+  </div>
+  <script src="./main.js"></script>
+</body>
+</html>

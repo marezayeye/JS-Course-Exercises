@@ -1,0 +1,84 @@
+body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    width: 400px;
+    padding: 40px;
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333333;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #888888;
+}
+
+input[type="username"],
+input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    padding-left: 40px;
+    border: none;
+    background: #f5f5f5;
+    border-radius: 6px;
+    color: #333333;
+}
+
+input[type="username"]::placeholder,
+input[type="password"]::placeholder {
+    color: #888888;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background: #333333;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #222222;
+}
+
+.login-failed {
+    color: red;
+}
+
+.login-done {
+    color: lightgreen;
+}
+
+.password-warning {
+    color: red;
+}
+
+.email-warning {
+    color: red;
+}
