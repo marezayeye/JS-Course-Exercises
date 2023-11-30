@@ -1,32 +1,85 @@
-const userChoice = prompt("Choose between Rock, Paper,Scissors");
 const choices = ["rock", "paper", "scissors"];
+let playerScore = 0;
+let computerScore =0;
 
-function computerChoice() {
-    let min = Math.ceil(0);
-    let max = Math.floor(3);
-    return choices[Math.floor(Math.random() * (max - min))];
-}
+const resultUpdater = (result) => {
+    if (result === "player") {
+        console.log("You Win");
+        playerScore++;
+    } else if (result === "computer"){
+        console.log("You Lose");
+        computerScore++;
+    } else {
+        console.log("It's a tie!")
+    };
 
-if (userChoice){
-    console.log(`You Choose ${userChoice}`);
-    let opponentChoice = computerChoice();
-    console.log(`Computer Chosed : ${opponentChoice}`);
-    if (userChoice == "rock"  && opponentChoice == "paper"){
-        console.log("You lose.");
-    } else if  (userChoice == "rock" && opponentChoice == "scissors"){
-        console.log("You win.");
-    } else if ( userChoice == opponentChoice){
-        console.log("Deuce");
-    } else if (userChoice == "paper" && opponentChoice == "rock"){
-        console.log("You win.");
-    } else if (userChoice == "paper" && opponentChoice == "scissors"){
-        console.log("You lose");
-    } else if (userChoice == "scissors" && opponentChoice == "paper"){
-        console.log("You win.");
-    } else if (userChoice == "scissors" && opponentChoice == "rock"){
-        console.log("You lose");
-    }
+    console.log(`Player ${playerScore} : ${computerScore} Computer`);
+    console.log("...................");
+};
+
+function checkWinner(player, computer){
+    if (player === computer){
+        return "Draw";
+    } else if (player === "rock"){
+        return computer === "paper" ? "computer" : "player";
+    } else if (player === "paper"){
+        return computer === "rock" ? "player" : "computer";
+    } else return computer === "paper" ? "player" : "computer"; 
+};
+
+
+
+
+const play = () => {
     
-} else {
-    console.log("You Cheated");
-}
+    const player = prompt("Choose between Rock, Paper and Scissors");
+    if (choices.indexOf(player?.toLocaleLowerCase()) === -1){
+         return"You Cheated!";
+    }else {
+            console.log(`You Chosed ${player} `);
+        const computer = choices[Math.floor(Math.random() * choices.length)];
+        console.log(`Computer Chosed ${computer}`);
+        const gameResult = checkWinner(player, computer);
+        resultUpdater(gameResult);
+        if (playerScore >= 5 || computerScore >= 5){
+            console.log("Game is Over");
+            console.log("Final Result is :");
+            console.log(`Player ${playerScore} : ${computerScore} Computer`);
+        } else play();
+    }
+};
+
+play();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
